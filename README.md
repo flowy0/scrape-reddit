@@ -42,4 +42,11 @@ APP_NAME=
 REDDIT_USERNAME=
 REDDIT_PASSWORD=
 ```
+If Edit Mode is not required -- Username and Password is not required
 
+
+Run the code 
+```
+# change necessary inputs in get_data function
+python get_data_with_praw.py
+```
