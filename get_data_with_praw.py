@@ -37,7 +37,7 @@ def print_attributes(input, topic):
         pprint.pprint(vars(submission))
 
         
-def get_subreddit(input, topic, limit, file_output):
+def get_subreddit(input, topic, limit):
     # Assign a subreddit topic
     subreddit = input.subreddit(topic)
 
@@ -58,22 +58,29 @@ def get_subreddit(input, topic, limit, file_output):
         topics_dict["created_utc"].append(submission.created_utc)
         topics_dict["body"].append(submission.selftext)
 
-        # save to csv
-        topics_data = pd.DataFrame(topics_dict)
-        topics_data.to_csv(file_output, index=False)
-        print(f"saved data to {file_output}")
-        print(topics_data.info())
+    return topics_dict
 
 
+def save_csv(input_dict, file_output):
+    # save to csv
+    topics_data = pd.DataFrame(input_dict)
+    topics_data.to_csv(file_output, index=False)
+    print(f"saved data to {file_output}")
+    print(topics_data.info())
 
-def get_data():
+
+def get_data(topic, limit, file_output):
     env_vars = load_env()
     reddit = login(env_vars)
-    print_attributes(input=reddit, topic="Coffee")
-    get_subreddit(input=reddit, topic="Coffee", limit=100, file_output="your_data.csv")
+    print_attributes(input=reddit, topic=topic)
+    data_dict = get_subreddit(input=reddit, topic=topic, limit=limit)
+    save_csv(input_dict=data_dict, file_output=file_output)
+
+
+
 
 if __name__ == "__main__":
-    get_data()
+    get_data(topic="Coffee", limit=100, file_output="your_data.csv")
 
 
 # selected_attr = ['created_utc', 'domain', 'title', 'selftext']
