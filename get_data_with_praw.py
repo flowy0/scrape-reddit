@@ -69,18 +69,18 @@ def save_csv(input_dict, file_output):
     print(topics_data.info())
 
 
-def get_data(topic, limit, file_output):
+def get_data_as_dict(topic, limit):
     env_vars = load_env()
     reddit = login(env_vars)
     print_attributes(input=reddit, topic=topic)
     data_dict = get_subreddit(input=reddit, topic=topic, limit=limit)
-    save_csv(input_dict=data_dict, file_output=file_output)
-
+    return data_dict
 
 
 
 if __name__ == "__main__":
-    get_data(topic="Coffee", limit=100, file_output="your_data.csv")
+    data_dict = get_data_as_dict(topic="Coffee", limit=100)
+    save_csv(input_dict=data_dict, file_output="your_data.csv")
 
 
 # selected_attr = ['created_utc', 'domain', 'title', 'selftext']
