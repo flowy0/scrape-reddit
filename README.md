@@ -2,7 +2,11 @@
 ### A repo to try out web scraping using an API
 
 
-Following this tutorial with slight modifications --> https://www.storybench.org/how-to-scrape-reddit-with-python/
+Following this tutorial with modifications --> https://www.storybench.org/how-to-scrape-reddit-with-python/
+Modifications:
+- Usage of Python  Modules
+- Pyspark for loading and cleaning
+
 
 #### Setup your environment:
 
@@ -48,5 +52,5 @@ If Edit Mode is not required -- Username and Password is not required
 Run the code 
 ```
 # change necessary inputs in get_data function
-python get_data_with_praw.py
+python main.py
 ```
