@@ -18,7 +18,7 @@ def add_columns(df):
     df_new = (df.withColumn("timestamp", F.from_unixtime(df.created_utc, 'GMT')))
     # df = (df.select("created_utc").withColumn("dayofweek", dayofweek("created_utc")))
     df_new.printSchema()
-    df_new.show(truncate=False)
+    # df_new.show(truncate=False)
     return df_new
 
 def check_new_columns(df, col_name):
