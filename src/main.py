@@ -12,9 +12,9 @@ import logging.handlers
 if __name__ == "__main__":
 
     # this can also be set in an .env file 
-    FILE_RAW = "ml_raw.parquet"
-    FILE_CLEAN = "ml_clean.parquet"
-    LOG_FILE ="main_log.log"
+    FILE_RAW = "./data/ml_raw.parquet"
+    FILE_CLEAN = "./data/ml_clean.parquet"
+    LOG_FILE ="./logs/main_log.log"
     TOPIC="MachineLearning"
     LIMIT=50
 

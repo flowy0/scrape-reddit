@@ -82,7 +82,7 @@ def get_data_as_dict(topic, limit):
 
 if __name__ == "__main__":
     data_dict = get_data_as_dict(topic="Coffee", limit=100)
-    save_csv(input_dict=data_dict, file_output="your_data.csv")
+    save_csv(input_dict=data_dict, file_output="./data/your_data.csv")
 
 
 # selected_attr = ['created_utc', 'domain', 'title', 'selftext']
