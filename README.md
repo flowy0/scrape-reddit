@@ -52,5 +52,5 @@ If Edit Mode is not required -- Username and Password is not required
 Run the code 
 ```
 # change necessary inputs in main function
-python main.py
+python src/main.py
 ```
