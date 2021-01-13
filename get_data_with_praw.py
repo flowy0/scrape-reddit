@@ -6,6 +6,8 @@ import datetime as dt
 from dotenv import load_dotenv
 import os
 import pprint
+import logging 
+logger = logging.getLogger()
 
 
 # get your secret variables from the .env file
@@ -21,7 +23,7 @@ def login(env_vars):
                         #  password=env_vars['REDDIT_PASSWORD']
                         )
     # to verify whether the instance is read-only instance or not 
-    print(f"Readonly instance: {reddit.read_only}") 
+    logger.info(f"Readonly instance: {reddit.read_only}") 
 
     return reddit
 
@@ -33,8 +35,8 @@ def print_attributes(input, topic):
     # print 1 to look at the data formats
     for submission in sample_record:
         # check what attributes are available
-        print("Available attributes: \n")
-        pprint.pprint(vars(submission))
+        logger.info("Available attributes: \n")
+        logger.info(pprint.pprint(vars(submission)))
 
         
 def get_subreddit(input, topic, limit):
@@ -65,14 +67,14 @@ def save_csv(input_dict, file_output):
     # save to csv
     topics_data = pd.DataFrame(input_dict)
     topics_data.to_csv(file_output, index=False)
-    print(f"saved data to {file_output}")
-    print(topics_data.info())
+    logger.info(f"saved data to {file_output}")
+    logger.info(topics_data.info())
 
 
 def get_data_as_dict(topic, limit):
     env_vars = load_env()
     reddit = login(env_vars)
-    print_attributes(input=reddit, topic=topic)
+    # print_attributes(input=reddit, topic=topic)
     data_dict = get_subreddit(input=reddit, topic=topic, limit=limit)
     return data_dict
 
